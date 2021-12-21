@@ -3,10 +3,11 @@
 #define __PLAYER_H__
 
 #define MAX_STAT 5.0
+#include <string>
 class Player : public Character
 {
     public:
-    Player();
+    Player(std::string Name,int age,std::string major, std::string gender, std::string hobby, Zodiac Sun,Zodiac Moon,Zodiac Rising, char idc, int idn);
     ~Player();
 
     private:
@@ -18,8 +19,8 @@ class Player : public Character
     double proficiency = 0;
     
     public:
-    void Relationships();
-    void RaiseStat(double stat);
+    void Relationships(Character*);
+    void RaiseStat(char stat);
     inline double GetIntelligence() const {return intelligence;}
     inline double GetCharisma()const{return charisma;}
     inline double GetKindness()const{return kindness;}
