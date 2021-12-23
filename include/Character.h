@@ -3,10 +3,7 @@
 #ifndef __CHARACTER_H__
 #define __CHARACTER_H__
 #define MAX_PROPINQUITY 10.0
-class Character : public GameObject
-{
-    protected:
-    enum Zodiac
+enum Zodiac
     {
         ARIES = 0,
         TAURUS,
@@ -21,6 +18,10 @@ class Character : public GameObject
         AQUARIUS,
         PISCES
     };
+class Character : public GameObject
+{
+    protected:
+    
     enum State
     {
         AVAILABLE = 0,
@@ -53,9 +54,10 @@ class Character : public GameObject
     inline bool GetRelationship() const{return dating_player;}
     void RelationshipChange(bool sign);
     void ShowStatus();
-    std::string ConvertZodiac(Zodiac sign);
+    
     private:
     bool dating_player = false;
 };
-
+Zodiac ConvertZodiac(std::string sign);
+std::string ConvertZodiac(Zodiac sign);
 #endif

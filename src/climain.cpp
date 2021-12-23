@@ -15,7 +15,7 @@ int main(int argc, char** argv)
     string* title = new string("Veritas Life");
     ascii_art(*title);
     delete title;
-    for(int i = 0; i<10; i++)
+    for(int i = 0; i<5; i++)
     {
         cout << endl;
     }
@@ -46,10 +46,19 @@ int main(int argc, char** argv)
     cin >> *moon;
     cin >> *rising;
 
-    cout << "Now creating your player character...";
+    cout << "Now creating your player character...\n";
 
     sleep(5);
-    Player *protag = new Player(name, age, major, gender, hobby, sun, moon, rising, 'M',1);
+    Player *protag = new Player(*name, *age, *major, *gender, *hobby, ConvertZodiac(*sun), ConvertZodiac(*moon), ConvertZodiac(*rising), 'M',1);
 
+    delete protag;
+    delete name;
+    delete gender;
+    delete major;
+    delete age;
+    delete hobby;
+    delete sun;
+    delete moon;
+    delete rising;
     return 0;
 }

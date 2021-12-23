@@ -14,6 +14,11 @@ Character::Character(string Name,int Age,string Major, string Gender, string Hob
     rising = Rising;
 }
 
+Character::~Character()
+{
+    
+}
+
 void Character::ChangePropinquity(bool sign, int multiplier)
 {
     (sign) ? propinquity+= multiplier * 0.5 : propinquity -= multiplier * 0.5;
@@ -36,7 +41,7 @@ void Character::ShowStatus()
     cout << "Relationship Status: " << ((dating_player) ? "Taken" : "Single") << endl;
 }
 
-string Character::ConvertZodiac(Zodiac sign)
+string ConvertZodiac(Zodiac sign)
 {
     switch(sign)
     {
@@ -52,5 +57,28 @@ string Character::ConvertZodiac(Zodiac sign)
         case CAPRICORN: return "Capricorn"; break;
         case AQUARIUS: return "Aquarius"; break;
         case PISCES: return "Pisces"; break;
+    }
+}
+Zodiac ConvertZodiac(string sign)
+{
+    std::transform(sign.begin(), sign.end(),sign.begin(), ::toupper);
+    if(sign.compare("ARIES") == 0) return ARIES;
+    else if(sign.compare("TAURUS") == 0) return TAURUS;
+    else if(sign.compare("GEMINI") == 0) return GEMINI;
+    else if(sign.compare("CANCER") == 0) return CANCER;
+    else if(sign.compare("LEO") == 0) return LEO;
+    else if(sign.compare("VIRGO") == 0) return VIRGO;
+    else if(sign.compare("LIBRA") == 0) return LIBRA;
+    else if(sign.compare("SCORPIO") == 0) return SCORPIO;
+    else if(sign.compare("SAGITTARIUS") == 0) return SAGITTARIUS;
+    else if(sign.compare("CAPRICORN") == 0) return CAPRICORN;
+    else if(sign.compare("AQUARIUS") == 0) return AQUARIUS;
+    else if(sign.compare("PISCES") == 0) return PISCES;
+    else
+    {
+        string correction;
+        cout << "Invalid sign input, please try again: ";
+        std::cin >> correction;
+        ConvertZodiac(correction);
     }
 }
